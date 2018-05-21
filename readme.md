@@ -4,31 +4,41 @@ $ cd /var/www/html
 $ git clone https://github.com/yomun/pinfo
 $ cd pinfo
 ```
-2) Change MySql database Settings (.env) 
+2) prepare extensions (vendor)
 ```
+$ composer install
+```
+
+3) Change MySql database Settings (.env) 
+```
+$ cp .env.example .env
 $ gedit .env
 
 DB_DATABASE=pinfo
 DB_USERNAME=root
 DB_PASSWORD=123456
 ```
-3) Create database 'pinfo'
+4) prepare Key
+```
+$ php artisan key:generate
+```
+5) Create database 'pinfo'
 ```
 $ mysql -u root -p123456
 mysql> show databases;
 mysql> create database pinfo;
 mysql> exit
 ```
-4) Database migration
+6) Database migration
 ```
 $ php artisan migrate
 $ php artisan db:seed
 ```
-5) Start 'PInfo' Web Service
+7) Start 'PInfo' Web Service
 ```
 $ php artisan serve --host=0.0.0.0 --port=8080
 ```
-6) User account for 'PInfo'
+8) User account for 'PInfo'
 ```
 https://localhost:8080/
 
