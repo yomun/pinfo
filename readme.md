@@ -4,7 +4,7 @@ $ cd /var/www/html
 $ git clone https://github.com/yomun/pinfo
 $ cd pinfo
 ```
-2) prepare extensions (vendor)
+2) Prepare extensions (vendor)
 ```
 $ composer install
 ```
@@ -18,7 +18,7 @@ DB_DATABASE=pinfo
 DB_USERNAME=root
 DB_PASSWORD=123456
 ```
-4) prepare Key
+4) Prepare Key
 ```
 $ php artisan key:generate
 ```
