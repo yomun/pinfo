@@ -20,6 +20,7 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/', 'HomeController@index')->name('home');
+Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get( '/contact',  'ContactController@edit')->name('contact');
 Route::post('/contact',  'ContactController@store');
@@ -30,12 +31,3 @@ Route::get('/users',   'UserController@index')->name('users');
 Route::post('/users',  'UserController@show');
 
 Route::resource('user', 'UserController');
-
-// Route::get('/contacts',  'ContactController@index')->name('contacts');
-// Route::post('/contacts', 'ContactController@output');
-
-// , 'namespace' => 'Admin', 'prefix' => 'admin'
-//Route::group(['middleware' => 'auth'], function() {
-    //Route::get('/contact', 'ContactController@index')->name('contact');
-	//Route::resource('contact', 'ContactController');
-//});
