@@ -15,15 +15,16 @@ use App\Http\Resources\ContactCollection;
 class UserController extends Controller
 {
 	// User List
-    public function index()
-    {
-    	return view('users')->withUsers(User::all());
-    }
+	public function index()
+	{
+		return view('users')->withUsers(User::all());
+	}
 
-    // User List: JSON Format
-    public function show() {
-    	return new UserCollection(User::all());
-    }
+	// User List: JSON Format
+	public function show() 
+	{
+		return new UserCollection(User::all());
+	}
 
 	// Edit Page
 	public function edit($id)
@@ -33,29 +34,29 @@ class UserController extends Controller
 	}
 
 	// UPDATE PROCESS
-    public function update(Request $request, $id)
-    {
-        $this->validate($request, [
-            'name'  => 'required|string|max:255',
-            'email' => 'required|string|max:255',
-        ]);
+	public function update(Request $request, $id)
+	{
+		$this->validate($request, [
+		    'name'  => 'required|string|max:255',
+		    'email' => 'required|string|max:255',
+		]);
 
-        $user = User::find($id);
-        $user->name  = $request->get('name');
-        $user->email = $request->get('email');
+		$user = User::find($id);
+		$user->name  = $request->get('name');
+		$user->email = $request->get('email');
 
-        if (($request->get('role') == "1") || ($request->get('role') == "2")) {
-        	$user->role_id = $request->get('role');
-    	}
+		if (($request->get('role') == "1") || ($request->get('role') == "2")) {
+			$user->role_id = $request->get('role');
+		}
 
-        if ($user->save()) {
-            return redirect()->back()->withInput()->withErrors('Saving OK');
-        } else {
-            return redirect()->back()->withInput()->withErrors('Saving NOK');
-        }
-    }
+		if ($user->save()) {
+			return redirect()->back()->withInput()->withErrors('Saving OK');
+		} else {
+			return redirect()->back()->withInput()->withErrors('Saving NOK');
+		}
+	}
 
-    // DELETE PROCESS
+	// DELETE PROCESS
 	public function destroy($id)
 	{
 		$user = User::find($id);
